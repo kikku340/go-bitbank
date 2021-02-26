@@ -37,7 +37,7 @@ func (p *Request) Cancel(pair string, orderID int) (Order, error) {
 	}
 	defer res.Body.Close()
 
-	var resp Response
+	var resp OrderResponse
 	json.NewDecoder(res.Body).Decode(&resp)
 	if resp.Success != 1 {
 		return Order{}, e.Handler(resp.Data.Code, err)
@@ -77,7 +77,7 @@ func (p *Request) Cancels(pair string, orders ...int) (Order, error) {
 	}
 	defer res.Body.Close()
 
-	var resp Response
+	var resp OrderResponse
 	json.NewDecoder(res.Body).Decode(&resp)
 	if resp.Success != 1 {
 		return Order{}, e.Handler(resp.Data.Code, err)

@@ -29,7 +29,7 @@ func (p *Request) ActiveOrders(b *ActiveOrderBody) (ActiveOrder, error) {
 		return ActiveOrder{}, err
 	}
 
-	auth.MakeHeader(p.Token, p.Secret, m, req)
+	auth.MakeHeader(p.Token, p.Secret, nil, req)
 
 	c := new(http.Client)
 	res, err := c.Do(req)
@@ -38,7 +38,7 @@ func (p *Request) ActiveOrders(b *ActiveOrderBody) (ActiveOrder, error) {
 	}
 	defer res.Body.Close()
 
-	var resp Response
+	var resp ActiveOrderResponse
 	json.NewDecoder(res.Body).Decode(&resp)
 	if resp.Success != 1 {
 		return ActiveOrder{}, e.Handler(resp.Data.Code, err)

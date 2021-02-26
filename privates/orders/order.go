@@ -43,7 +43,12 @@ type ActiveOrderBody struct {
 	End    string `json:"end"`
 }
 
-type Response struct {
+type OrderResponse struct {
+	Success int   `json:"success"`
+	Data    Order `json:"data"`
+}
+
+type ActiveOrderResponse struct {
 	Success int   `json:"success"`
 	Data    Order `json:"data"`
 }
@@ -102,7 +107,7 @@ func (p *Request) Post(b *Body) (Order, error) {
 	}
 	defer res.Body.Close()
 
-	var resp Response
+	var resp OrderResponse
 	if err := json.NewDecoder(res.Body).Decode(&resp); err != nil {
 		fmt.Println(err) // OK: order_idがint64
 	}
