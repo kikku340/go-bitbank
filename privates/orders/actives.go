@@ -1,6 +1,7 @@
 package orders
 
 import (
+	"bytes"
 	"net/url"
 
 	e "github.com/go-numb/go-bitbank/errors"
@@ -17,14 +18,14 @@ func (p *Request) ActiveOrders(b *ActiveOrderBody) (ActiveOrder, error) {
 	if err != nil {
 		return ActiveOrder{}, err
 	}
-	u.Path = path.Join(VERSION, PATH, "cancel_order")
+	u.Path = path.Join(VERSION, PATH, "active_orders")
 
 	j, err := json.Marshal(b)
 	if err != nil {
 		return ActiveOrder{}, err
 	}
 
-	req, err := http.NewRequest("POST", u.String(), nil)
+	req, err := http.NewRequest("POST", u.String(), bytes.NewReader(j))
 	if err != nil {
 		return ActiveOrder{}, err
 	}

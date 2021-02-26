@@ -35,12 +35,12 @@ type Body struct {
 }
 
 type ActiveOrderBody struct {
-	Pair   string `json:"pair"`
-	Count  int    `json:"count"`
-	FromID int    `json:"from_id"`
-	EndID  string `json:"end_id"`
-	Since  string `json:"since"`
-	End    string `json:"end"`
+	Pair   string     `json:"pair"`
+	Count  int        `json:"count"`
+	FromID int        `json:"from_id"`
+	EndID  string     `json:"end_id"`
+	Since  types.Time `json:"since"`
+	End    types.Time `json:"end"`
 }
 
 type OrderResponse struct {

@@ -19,7 +19,7 @@ func (p *Request) Cancel(pair string, orderID int) (Order, error) {
 	if err != nil {
 		return Order{}, err
 	}
-	u.Path = path.Join(VERSION, PATH, "active_orders")
+	u.Path = path.Join(VERSION, PATH, "cancel_order")
 
 	m := fmt.Sprintf(`{"pair": "%s", "order_id": %d}`, pair, orderID)
 
@@ -37,7 +37,7 @@ func (p *Request) Cancel(pair string, orderID int) (Order, error) {
 	}
 	defer res.Body.Close()
 
-	var resp OrderResponse
+	var resp Response
 	json.NewDecoder(res.Body).Decode(&resp)
 	if resp.Success != 1 {
 		return Order{}, e.Handler(resp.Data.Code, err)
@@ -77,7 +77,7 @@ func (p *Request) Cancels(pair string, orders ...int) (Order, error) {
 	}
 	defer res.Body.Close()
 
-	var resp OrderResponse
+	var resp Response
 	json.NewDecoder(res.Body).Decode(&resp)
 	if resp.Success != 1 {
 		return Order{}, e.Handler(resp.Data.Code, err)
