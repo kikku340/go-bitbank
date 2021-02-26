@@ -49,8 +49,8 @@ type OrderResponse struct {
 }
 
 type ActiveOrderResponse struct {
-	Success int   `json:"success"`
-	Data    Order `json:"data"`
+	Success int         `json:"success"`
+	Data    ActiveOrder `json:"data"`
 }
 
 type Order struct {
