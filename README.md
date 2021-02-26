@@ -1,7 +1,7 @@
 # go-bitbank
 
 bitbank API
-
+forked from https://github.com/go-numb/go-bitbank
 ## Description
 
 go-bitbank is a go client library for [Bitbank.cc API](https://docs.bitbank.cc).
@@ -9,7 +9,7 @@ go-bitbank is a go client library for [Bitbank.cc API](https://docs.bitbank.cc).
 ## Installation
 
 ```
-$ go get -u github.com/go-numb/go-bitbank
+$ go get -u github.com/kikku340/go-bitbank
 ```
 
 ## PublicAPI
@@ -18,7 +18,7 @@ package main
 
 import (
  "fmt"
- "github.com/go-numb/go-bitbank"
+ "github.com/kikku340/go-bitbank"
 )
 
 

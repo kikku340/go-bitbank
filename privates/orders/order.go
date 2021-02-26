@@ -34,6 +34,15 @@ type Body struct {
 	Type   string  `json:"type"`
 }
 
+type ActiveOrderBody struct {
+	Pair   string `json:"pair"`
+	Count  int    `json:"count"`
+	FromID int    `json:"from_id"`
+	EndID  string `json:"end_id"`
+	Since  string `json:"since"`
+	End    string `json:"end"`
+}
+
 type Response struct {
 	Success int   `json:"success"`
 	Data    Order `json:"data"`
@@ -42,6 +51,19 @@ type Response struct {
 type Order struct {
 	Code            int        `json:"code"`
 	OrderID         int64      `json:"order_id"`
+	Pair            string     `json:"pair"`
+	Side            string     `json:"side"`
+	Type            string     `json:"type"`
+	StartAmount     float64    `json:"start_amount,string"`
+	RemainingAmount float64    `json:"remaining_amount,string"`
+	ExecutedAmount  float64    `json:"executed_amount,string"`
+	Price           float64    `json:"price,string"`
+	AveragePrice    float64    `json:"average_price,string"`
+	OrderedAt       types.Time `json:"ordered_at"`
+	Status          string     `json:"status"`
+}
+
+type ActiveOrder struct {
 	Pair            string     `json:"pair"`
 	Side            string     `json:"side"`
 	Type            string     `json:"type"`

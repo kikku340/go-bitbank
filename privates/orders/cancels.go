@@ -19,7 +19,7 @@ func (p *Request) Cancel(pair string, orderID int) (Order, error) {
 	if err != nil {
 		return Order{}, err
 	}
-	u.Path = path.Join(VERSION, PATH, "cancel_order")
+	u.Path = path.Join(VERSION, PATH, "active_orders")
 
 	m := fmt.Sprintf(`{"pair": "%s", "order_id": %d}`, pair, orderID)
 
