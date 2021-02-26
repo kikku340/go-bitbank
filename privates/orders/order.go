@@ -69,6 +69,7 @@ type Order struct {
 }
 
 type ActiveOrder struct {
+	Code            int        `json:"code"`
 	Pair            string     `json:"pair"`
 	Side            string     `json:"side"`
 	Type            string     `json:"type"`

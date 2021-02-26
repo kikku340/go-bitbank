@@ -41,7 +41,7 @@ func (p *Request) ActiveOrders(b *ActiveOrderBody) (ActiveOrder, error) {
 	var resp ActiveOrderResponse
 	json.NewDecoder(res.Body).Decode(&resp)
 	if resp.Success != 1 {
-		return ActiveOrder{}, e.Handler(resp.Data, err)
+		return ActiveOrder{}, e.Handler(resp.Data.Code, err)
 	}
 
 	return resp.Data, nil
